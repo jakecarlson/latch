@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use App\Models\Team;
 
 return [
 
@@ -42,10 +42,10 @@ return [
     |
     */
 
-    // 'brand' =>  [
-    //     'logo' => realpath(__DIR__.'/../public/svg/billing-logo.svg'),
-    //     'color' => 'bg-gray-800',
-    // ],
+    'brand' =>  [
+        'logo' => realpath(__DIR__.'/../public/svg/billing-logo.svg'),
+        'color' => 'bg-gray-800',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -90,29 +90,80 @@ return [
 
     'billables' => [
 
-        'user' => [
-            'model' => User::class,
-
-            'trial_days' => 5,
-
+        'team' => [
+            'model' => Team::class,
+            'trial_days' => 30,
             'default_interval' => 'monthly',
-
             'plans' => [
                 [
-                    'name' => 'Standard',
+                    'name' => 'Solo',
                     'short_description' => 'This is a short, human friendly description of the plan.',
-                    'monthly_id' => env('SPARK_STANDARD_MONTHLY_PLAN', 1000),
-                    'yearly_id' => env('SPARK_STANDARD_YEARLY_PLAN', 1001),
+                    'monthly_id' => env('SPARK_SOLO_MONTHLY_PLAN', 1000),
+                    'yearly_id' => env('SPARK_SOLO_YEARLY_PLAN', 1001),
+                    'yearly_incentive' => 'Save 20%',
                     'features' => [
                         'Feature 1',
                         'Feature 2',
                         'Feature 3',
                     ],
+                    'options' => [
+                        'max_users' => env('SPARK_SOLO_MAX_USERS', 1),
+                    ],
+                    'archived' => false,
+                ],
+                [
+                    'name' => 'Team',
+                    'short_description' => 'This is a short, human friendly description of the plan.',
+                    'monthly_id' => env('SPARK_TEAM_MONTHLY_PLAN', 2000),
+                    'yearly_id' => env('SPARK_TEAM_YEARLY_PLAN', 2001),
+                    'yearly_incentive' => 'Save 20%',
+                    'features' => [
+                        'Feature 1',
+                        'Feature 2',
+                        'Feature 3',
+                    ],
+                    'options' => [
+                        'max_users' => env('SPARK_TEAM_MAX_USERS', 5),
+                    ],
+                    'archived' => false,
+                ],
+                [
+                    'name' => 'Business',
+                    'short_description' => 'This is a short, human friendly description of the plan.',
+                    'monthly_id' => env('SPARK_BUSINESS_MONTHLY_PLAN', 3000),
+                    'yearly_id' => env('SPARK_BUSINESS_YEARLY_PLAN', 3001),
+                    'yearly_incentive' => 'Save 20%',
+                    'features' => [
+                        'Feature 1',
+                        'Feature 2',
+                        'Feature 3',
+                    ],
+                    'options' => [
+                        'max_users' => env('SPARK_BUSINESS_MAX_USERS', 25),
+                    ],
+                    'archived' => false,
+                ],
+                [
+                    'name' => 'Enterprise',
+                    'short_description' => 'This is a short, human friendly description of the plan.',
+                    'monthly_id' => env('SPARK_ENTERPRISE_MONTHLY_PLAN', 4000),
+                    'yearly_id' => env('SPARK_ENTERPRISE_YEARLY_PLAN', 4001),
+                    'yearly_incentive' => 'Save 20%',
+                    'features' => [
+                        'Feature 1',
+                        'Feature 2',
+                        'Feature 3',
+                    ],
+                    'options' => [
+                        'max_users' => env('SPARK_ENTERPRISE_MAX_USERS', 1000),
+                    ],
                     'archived' => false,
                 ],
             ],
-
         ],
 
     ],
+
+    'terms_url' => '/terms',
+
 ];

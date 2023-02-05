@@ -3,14 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
 use Laravel\Jetstream\Team as JetstreamTeam;
+use Spark\Billable;
 
 class Team extends JetstreamTeam
 {
-    use HasFactory;
+    use HasFactory, Billable, Notifiable;
 
     /**
      * The attributes that should be cast.
@@ -41,4 +43,14 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    /**
+     * Get the owner's email
+     *
+     * @return string
+     */
+    public function paddleEmail(): string|null
+    {
+        return $this->owner->email;
+    }
 }

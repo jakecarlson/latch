@@ -21,6 +21,13 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
     /**
+     * Compatibility with Team billable
+     *
+     * @var int
+     */
+    public $users = 1;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var string<int, string>
