@@ -102,12 +102,12 @@ return [
                     'yearly_id' => env('SPARK_SOLO_YEARLY_PLAN', 1001),
                     'yearly_incentive' => 'Save 20%',
                     'features' => [
-                        'Feature 1',
+                        '1 user',
                         'Feature 2',
                         'Feature 3',
                     ],
                     'options' => [
-                        'max_users' => env('SPARK_SOLO_MAX_USERS', 1),
+                        'max_users' => intval(env('SPARK_SOLO_MAX_USERS', 1)),
                     ],
                     'archived' => false,
                 ],
@@ -118,12 +118,12 @@ return [
                     'yearly_id' => env('SPARK_TEAM_YEARLY_PLAN', 2001),
                     'yearly_incentive' => 'Save 20%',
                     'features' => [
-                        'Feature 1',
+                        'Up to ' . env('SPARK_TEAM_MAX_USERS', 5) . ' users',
                         'Feature 2',
                         'Feature 3',
                     ],
                     'options' => [
-                        'max_users' => env('SPARK_TEAM_MAX_USERS', 5),
+                        'max_users' => intval(env('SPARK_TEAM_MAX_USERS', 5)),
                     ],
                     'archived' => false,
                 ],
@@ -134,12 +134,12 @@ return [
                     'yearly_id' => env('SPARK_BUSINESS_YEARLY_PLAN', 3001),
                     'yearly_incentive' => 'Save 20%',
                     'features' => [
-                        'Feature 1',
+                        'Up to ' . env('SPARK_BUSINESS_MAX_USERS', 25) . ' users',
                         'Feature 2',
                         'Feature 3',
                     ],
                     'options' => [
-                        'max_users' => env('SPARK_BUSINESS_MAX_USERS', 25),
+                        'max_users' => intval(env('SPARK_BUSINESS_MAX_USERS', 25)),
                     ],
                     'archived' => false,
                 ],
@@ -150,12 +150,12 @@ return [
                     'yearly_id' => env('SPARK_ENTERPRISE_YEARLY_PLAN', 4001),
                     'yearly_incentive' => 'Save 20%',
                     'features' => [
-                        'Feature 1',
+                        'Unlimited users',
                         'Feature 2',
                         'Feature 3',
                     ],
                     'options' => [
-                        'max_users' => env('SPARK_ENTERPRISE_MAX_USERS', 1000),
+                        'max_users' => intval(env('SPARK_ENTERPRISE_MAX_USERS', 1000)),
                     ],
                     'archived' => false,
                 ],

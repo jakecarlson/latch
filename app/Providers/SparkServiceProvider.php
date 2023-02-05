@@ -29,7 +29,7 @@ class SparkServiceProvider extends ServiceProvider
         });
 
         Spark::billable(Team::class)->checkPlanEligibility(function (Team $billable, Plan $plan) {
-            if ($billable->users > $plan->options['max_users']) {
+            if ($billable->users->count() > $plan->options['max_users']) {
                 throw ValidationException::withMessages([
                     'plan' => 'You have too many users for the selected plan.'
                 ]);
